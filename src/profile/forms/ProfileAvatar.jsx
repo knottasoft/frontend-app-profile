@@ -8,6 +8,7 @@ import DefaultAvatar from '../../assets/icon-user.svg';
 import messages from './ProfileAvatar.messages';
 
 import uplodIcon from '../../assets/icon-upload.svg'
+import refreshIcon from '../../assets/icon-refresh.svg'
 
 class ProfileAvatar extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class ProfileAvatar extends React.Component {
   }
 
   renderMenuContent() {
-    const { intl } = this.props;
+    const { intl, isDefault } = this.props;
 
     const RoundAvatarDropdownToggle = React.forwardRef(({ children, onClick }, ref) => (
         <button
@@ -70,7 +71,7 @@ class ProfileAvatar extends React.Component {
               onClick(e);
             }}
         >
-          <img src={uplodIcon} alt={null} />
+          <img src={isDefault ? uplodIcon : refreshIcon} alt={null} />
         </button>
     ));
 
