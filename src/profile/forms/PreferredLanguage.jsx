@@ -14,6 +14,7 @@ import SwitchContent from './elements/SwitchContent';
 
 // Selectors
 import { preferredLanguageSelector } from '../data/selectors';
+import EditButton from "./elements/EditButton";
 
 class PreferredLanguage extends React.Component {
   constructor(props) {
@@ -71,43 +72,47 @@ class PreferredLanguage extends React.Component {
 
     return (
       <SwitchContent
-        className="mb-5"
+        className="mb-3"
         expression={editMode}
         cases={{
           editing: (
-            <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <form onSubmit={this.handleSubmit}>
-                <ValidationFormGroup
-                  for={formId}
-                  invalid={error !== null}
-                  invalidMessage={error}
-                >
-                  <label className="edit-section-header" htmlFor={formId}>
-                    {intl.formatMessage(messages['profile.preferredlanguage.label'])}
-                  </label>
-                  <select
-                    data-hj-suppress
-                    id={formId}
-                    name={formId}
-                    className="form-control"
-                    value={value}
-                    onChange={this.handleChange}
-                  >
-                    <option value="">&nbsp;</option>
-                    {sortedLanguages.map(({ code, name }) => (
-                      <option key={code} value={code}>{name}</option>
-                    ))}
-                  </select>
-                </ValidationFormGroup>
-                <FormControls
-                  visibilityId="visibilityLanguageProficiencies"
-                  saveState={saveState}
-                  visibility={visibilityLanguageProficiencies}
-                  cancelHandler={this.handleClose}
-                  changeHandler={this.handleChange}
-                />
-              </form>
-            </div>
+              <>
+                  <EditableItemHeader content={intl.formatMessage(messages['profile.preferredlanguage.label'])} />
+                  <div role="dialog" aria-labelledby={`${formId}-label`}>
+                      <form onSubmit={this.handleSubmit}>
+                          <ValidationFormGroup
+                              for={formId}
+                              invalid={error !== null}
+                              invalidMessage={error}
+                          >
+                              {/*<label className="edit-section-header" htmlFor={formId}>*/}
+                              {/*    {intl.formatMessage(messages['profile.preferredlanguage.label'])}*/}
+                              {/*</label>*/}
+                              <select
+                                  data-hj-suppress
+                                  id={formId}
+                                  name={formId}
+                                  className="form-control"
+                                  value={value}
+                                  onChange={this.handleChange}
+                              >
+                                  <option value="">&nbsp;</option>
+                                  {sortedLanguages.map(({ code, name }) => (
+                                      <option key={code} value={code}>{name}</option>
+                                  ))}
+                              </select>
+                          </ValidationFormGroup>
+                          <FormControls
+                              visibilityId="visibilityLanguageProficiencies"
+                              saveState={saveState}
+                              visibility={visibilityLanguageProficiencies}
+                              cancelHandler={this.handleClose}
+                              changeHandler={this.handleChange}
+                          />
+                      </form>
+                  </div>
+              </>
+
           ),
           editable: (
             <>
@@ -118,7 +123,16 @@ class PreferredLanguage extends React.Component {
                 showVisibility={visibilityLanguageProficiencies !== null}
                 visibility={visibilityLanguageProficiencies}
               />
-              <p data-hj-suppress className="h5">{languageMessages[value]}</p>
+              <div className="d-flex flex-column justify-content-start">
+                <EditButton
+                    style={{ marginTop: '-.35rem' }}
+                    onClick={this.handleOpen}
+                    content={languageMessages[value]}
+                    className="float-left px-0 text-start btn-link"
+                >
+                </EditButton>
+              </div>
+              {/*<p data-hj-suppress className="h5">{languageMessages[value]}</p>*/}
             </>
           ),
           empty: (

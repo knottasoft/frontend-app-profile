@@ -8,7 +8,7 @@ function DateJoined({ date }) {
   }
 
   return (
-    <p className="mb-0">
+    <p className="mb-2 text-white">
       <FormattedMessage
         id="profile.datejoined.member.since"
         defaultMessage="Member since {year}"

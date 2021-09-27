@@ -18,6 +18,7 @@ import { EDUCATION_LEVELS } from '../data/constants';
 
 // Selectors
 import { editableFormSelector } from '../data/selectors';
+import EditButton from "./elements/EditButton";
 
 class Education extends React.Component {
   constructor(props) {
@@ -57,49 +58,52 @@ class Education extends React.Component {
 
     return (
       <SwitchContent
-        className="mb-5"
+        className="mb-3"
         expression={editMode}
         cases={{
           editing: (
-            <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <form onSubmit={this.handleSubmit}>
-                <ValidationFormGroup
-                  for={formId}
-                  invalid={error !== null}
-                  invalidMessage={error}
-                >
-                  <label className="edit-section-header" htmlFor={formId}>
-                    {intl.formatMessage(messages['profile.education.education'])}
-                  </label>
-                  <select
-                    data-hj-suppress
-                    className="form-control"
-                    id={formId}
-                    name={formId}
-                    value={levelOfEducation}
-                    onChange={this.handleChange}
-                  >
-                    <option value="">&nbsp;</option>
-                    {EDUCATION_LEVELS.map(level => (
-                      <option key={level} value={level}>
-                        {intl.formatMessage(get(
-                          messages,
-                          `profile.education.levels.${level}`,
-                          messages['profile.education.levels.o'],
-                        ))}
-                      </option>
-                    ))}
-                  </select>
-                </ValidationFormGroup>
-                <FormControls
-                  visibilityId="visibilityLevelOfEducation"
-                  saveState={saveState}
-                  visibility={visibilityLevelOfEducation}
-                  cancelHandler={this.handleClose}
-                  changeHandler={this.handleChange}
-                />
-              </form>
-            </div>
+              <>
+                  <EditableItemHeader content={intl.formatMessage(messages['profile.education.education'])} />
+                  <div role="dialog" aria-labelledby={`${formId}-label`}>
+                      <form onSubmit={this.handleSubmit}>
+                          <ValidationFormGroup
+                              for={formId}
+                              invalid={error !== null}
+                              invalidMessage={error}
+                          >
+                              {/*<label className="edit-section-header" htmlFor={formId}>*/}
+                              {/*    {intl.formatMessage(messages['profile.education.education'])}*/}
+                              {/*</label>*/}
+                              <select
+                                  data-hj-suppress
+                                  className="form-control"
+                                  id={formId}
+                                  name={formId}
+                                  value={levelOfEducation}
+                                  onChange={this.handleChange}
+                              >
+                                  <option value="">&nbsp;</option>
+                                  {EDUCATION_LEVELS.map(level => (
+                                      <option key={level} value={level}>
+                                          {intl.formatMessage(get(
+                                              messages,
+                                              `profile.education.levels.${level}`,
+                                              messages['profile.education.levels.o'],
+                                          ))}
+                                      </option>
+                                  ))}
+                              </select>
+                          </ValidationFormGroup>
+                          <FormControls
+                              visibilityId="visibilityLevelOfEducation"
+                              saveState={saveState}
+                              visibility={visibilityLevelOfEducation}
+                              cancelHandler={this.handleClose}
+                              changeHandler={this.handleChange}
+                          />
+                      </form>
+                  </div>
+              </>
           ),
           editable: (
             <>
@@ -110,13 +114,26 @@ class Education extends React.Component {
                 showVisibility={visibilityLevelOfEducation !== null}
                 visibility={visibilityLevelOfEducation}
               />
-              <p data-hj-suppress className="h5">
-                {intl.formatMessage(get(
-                  messages,
-                  `profile.education.levels.${levelOfEducation}`,
-                  messages['profile.education.levels.o'],
-                ))}
-              </p>
+                <div className="d-flex flex-column justify-content-start">
+                    <EditButton
+                        style={{ marginTop: '-.35rem' }}
+                        onClick={this.handleOpen}
+                        content={intl.formatMessage(get(
+                            messages,
+                            `profile.education.levels.${levelOfEducation}`,
+                            messages['profile.education.levels.o'],
+                        ))}
+                        className="float-left px-0 text-start btn-link"
+                    >
+                    </EditButton>
+                </div>
+              {/*<p data-hj-suppress className="h5">*/}
+              {/*  {intl.formatMessage(get(*/}
+              {/*    messages,*/}
+              {/*    `profile.education.levels.${levelOfEducation}`,*/}
+              {/*    messages['profile.education.levels.o'],*/}
+              {/*  ))}*/}
+              {/*</p>*/}
             </>
           ),
           empty: (

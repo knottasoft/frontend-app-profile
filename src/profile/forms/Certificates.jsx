@@ -17,9 +17,11 @@ import SwitchContent from './elements/SwitchContent';
 // Assets
 import professionalCertificateSVG from '../assets/professional-certificate.svg';
 import verifiedCertificateSVG from '../assets/verified-certificate.svg';
+import iconInfo from "../../assets/icon-info.svg"
 
 // Selectors
 import { certificatesSelector } from '../data/selectors';
+import EditButton from "./elements/EditButton";
 
 class Certificates extends React.Component {
   constructor(props) {
@@ -116,11 +118,18 @@ class Certificates extends React.Component {
   renderCertificates() {
     if (this.props.certificates === null || this.props.certificates.length === 0) {
       return (
-        <FormattedMessage
-          id="profile.no.certificates"
-          defaultMessage="You don't have any certificates yet."
-          description="displays when user has no course completion certificates"
-        />
+          <div className="bg-light pt-4 px-4 pb-2 mb-4">
+            <ul className="list-inline d-flex align-items-center">
+              <li className="list-inline-item d-flex align-items-center"><img src={iconInfo} alt={null} /></li>
+              <li className="list-inline-item">
+                <FormattedMessage
+                    id="profile.no.certificates"
+                    defaultMessage="You don't have any certificates yet."
+                    description="displays when user has no course completion certificates"
+                />
+              </li>
+            </ul>
+          </div>
       );
     }
 
@@ -134,56 +143,86 @@ class Certificates extends React.Component {
       visibilityCourseCertificates, editMode, saveState, intl,
     } = this.props;
 
+    const headerBody = React.createElement(
+        'h4',
+        {},
+        `📝 ${intl.formatMessage(messages['profile.certificates.my.certificates'])}`
+    )
+
     return (
       <SwitchContent
-        className="mb-4"
+        className="mb-3"
         expression={editMode}
         cases={{
           editing: (
-            <div role="dialog" aria-labelledby="course-certificates-label">
-              <form onSubmit={this.handleSubmit}>
+              <>
                 <EditableItemHeader
-                  headingId="course-certificates-label"
-                  content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
+                    content={headerBody}
+                    onClickEdit={this.handleOpen}
+                    showVisibility={visibilityCourseCertificates !== null}
+                    visibility={visibilityCourseCertificates}
                 />
-                <FormControls
-                  visibilityId="visibilityCourseCertificates"
-                  saveState={saveState}
-                  visibility={visibilityCourseCertificates}
-                  cancelHandler={this.handleClose}
-                  changeHandler={this.handleChange}
-                />
-                {this.renderCertificates()}
-              </form>
-            </div>
+                <div role="dialog" aria-labelledby="course-certificates-label">
+                  <form onSubmit={this.handleSubmit}>
+                    {/*<EditableItemHeader*/}
+                    {/*    headingId="course-certificates-label"*/}
+                    {/*    content={intl.formatMessage(messages['profile.certificates.my.certificates'])}*/}
+                    {/*/>*/}
+                    {this.renderCertificates()}
+                    <FormControls
+                        visibilityId="visibilityCourseCertificates"
+                        saveState={saveState}
+                        visibility={visibilityCourseCertificates}
+                        cancelHandler={this.handleClose}
+                        changeHandler={this.handleChange}
+                    />
+                  </form>
+                </div>
+              </>
+
           ),
           editable: (
             <>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
-                showEditButton
-                onClickEdit={this.handleOpen}
-                showVisibility={visibilityCourseCertificates !== null}
-                visibility={visibilityCourseCertificates}
-              />
-              {this.renderCertificates()}
+                <EditableItemHeader
+                    content={headerBody}
+                    onClickEdit={this.handleOpen}
+                    showVisibility={visibilityCourseCertificates !== null}
+                    visibility={visibilityCourseCertificates}
+                />
+                {this.renderCertificates()}
+                <button
+                    className="btn btn-md btn-outline-primary"
+                    style={{ marginTop: '-.35rem' }}
+                    onClick={this.handleOpen}
+                >
+                    <span><i className="fa fa-pencil pe-2"></i></span>
+                    {intl.formatMessage(messages['profile.certificates.edit'])}
+                </button>
+
             </>
           ),
           empty: (
             <>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
-                showEditButton
-                onClickEdit={this.handleOpen}
-                showVisibility={visibilityCourseCertificates !== null}
-                visibility={visibilityCourseCertificates}
-              />
-              {this.renderCertificates()}
+                <EditableItemHeader
+                    content={headerBody}
+                    onClickEdit={this.handleOpen}
+                    showVisibility={visibilityCourseCertificates !== null}
+                    visibility={visibilityCourseCertificates}
+                />
+                {this.renderCertificates()}
+                <button
+                    className="btn btn-md btn-outline-primary mt-1"
+                    style={{ marginTop: '-.35rem' }}
+                    onClick={this.handleOpen}
+                >
+                    <span><i className="fa fa-pencil pe-2"></i></span>
+                    {intl.formatMessage(messages['profile.certificates.edit'])}
+                </button>
             </>
           ),
           static: (
             <>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.certificates.my.certificates'])} />
+              <EditableItemHeader content={headerBody} />
               {this.renderCertificates()}
             </>
           ),

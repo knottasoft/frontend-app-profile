@@ -14,6 +14,7 @@ import SwitchContent from './elements/SwitchContent';
 
 // Selectors
 import { countrySelector } from '../data/selectors';
+import EditButton from "./elements/EditButton";
 
 class Country extends React.Component {
   constructor(props) {
@@ -61,44 +62,48 @@ class Country extends React.Component {
 
     return (
       <SwitchContent
-        className="mb-5"
+        className="mb-3"
         expression={editMode}
         cases={{
           editing: (
-            <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <form onSubmit={this.handleSubmit}>
-                <ValidationFormGroup
-                  for={formId}
-                  invalid={error !== null}
-                  invalidMessage={error}
-                >
-                  <label className="edit-section-header" htmlFor={formId}>
-                    {intl.formatMessage(messages['profile.country.label'])}
-                  </label>
-                  <select
-                    data-hj-suppress
-                    className="form-control"
-                    type="select"
-                    id={formId}
-                    name={formId}
-                    value={country}
-                    onChange={this.handleChange}
-                  >
-                    <option value="">&nbsp;</option>
-                    {sortedCountries.map(({ code, name }) => (
-                      <option key={code} value={code}>{name}</option>
-                    ))}
-                  </select>
-                </ValidationFormGroup>
-                <FormControls
-                  visibilityId="visibilityCountry"
-                  saveState={saveState}
-                  visibility={visibilityCountry}
-                  cancelHandler={this.handleClose}
-                  changeHandler={this.handleChange}
-                />
-              </form>
-            </div>
+            <>
+                <EditableItemHeader content={intl.formatMessage(messages['profile.country.label'])} />
+                <div role="dialog" aria-labelledby={`${formId}-label`}>
+                    <form onSubmit={this.handleSubmit}>
+                        <ValidationFormGroup
+                            for={formId}
+                            invalid={error !== null}
+                            invalidMessage={error}
+                        >
+                            {/*<label className="edit-section-header" htmlFor={formId}>*/}
+                            {/*    {intl.formatMessage(messages['profile.country.label'])}*/}
+                            {/*</label>*/}
+                            <select
+                                data-hj-suppress
+                                className="form-control"
+                                type="select"
+                                id={formId}
+                                name={formId}
+                                value={country}
+                                onChange={this.handleChange}
+                            >
+                                <option value="">&nbsp;</option>
+                                {sortedCountries.map(({ code, name }) => (
+                                    <option key={code} value={code}>{name}</option>
+                                ))}
+                            </select>
+                        </ValidationFormGroup>
+                        <FormControls
+                            visibilityId="visibilityCountry"
+                            saveState={saveState}
+                            visibility={visibilityCountry}
+                            cancelHandler={this.handleClose}
+                            changeHandler={this.handleChange}
+                        />
+                    </form>
+                </div>
+            </>
+
           ),
           editable: (
             <>
@@ -109,7 +114,16 @@ class Country extends React.Component {
                 showVisibility={visibilityCountry !== null}
                 visibility={visibilityCountry}
               />
-              <p data-hj-suppress className="h5">{countryMessages[country]}</p>
+                <div className="d-flex flex-column justify-content-start">
+                    <EditButton
+                        style={{ marginTop: '-.35rem' }}
+                        onClick={this.handleOpen}
+                        content={countryMessages[country]}
+                        className="float-left px-0 text-start btn-link"
+                    >
+                    </EditButton>
+                </div>
+              {/*<p data-hj-suppress className="h5">{countryMessages[country]}</p>*/}
             </>
           ),
           empty: (

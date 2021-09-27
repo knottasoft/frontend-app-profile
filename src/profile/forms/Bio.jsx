@@ -14,6 +14,7 @@ import SwitchContent from './elements/SwitchContent';
 
 // Selectors
 import { editableFormSelector } from '../data/selectors';
+import EditButton from "./elements/EditButton";
 
 class Bio extends React.Component {
   constructor(props) {
@@ -48,50 +49,73 @@ class Bio extends React.Component {
       formId, bio, visibilityBio, editMode, saveState, error, intl,
     } = this.props;
 
+    const headerBody = React.createElement(
+        'h4',
+        {},
+        `📝 ${intl.formatMessage(messages['profile.bio.about.me'])}`
+    )
+
     return (
       <SwitchContent
-        className="mb-5"
+        className="mb-3"
         expression={editMode}
         cases={{
           editing: (
-            <div role="dialog" aria-labelledby={`${formId}-label`}>
-              <form onSubmit={this.handleSubmit}>
-                <ValidationFormGroup
-                  for={formId}
-                  invalid={error !== null}
-                  invalidMessage={error}
-                >
-                  <label className="edit-section-header" htmlFor={formId}>
-                    {intl.formatMessage(messages['profile.bio.about.me'])}
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id={formId}
-                    name={formId}
-                    value={bio}
-                    onChange={this.handleChange}
+              <>
+                  <EditableItemHeader
+                      content={headerBody}
+                      onClickEdit={this.handleOpen}
+                      showVisibility={visibilityBio !== null}
+                      visibility={visibilityBio}
                   />
-                </ValidationFormGroup>
-                <FormControls
-                  visibilityId="visibilityBio"
-                  saveState={saveState}
-                  visibility={visibilityBio}
-                  cancelHandler={this.handleClose}
-                  changeHandler={this.handleChange}
-                />
-              </form>
-            </div>
+                  <div role="dialog" aria-labelledby={`${formId}-label`}>
+                      <form onSubmit={this.handleSubmit}>
+                          <ValidationFormGroup
+                              for={formId}
+                              invalid={error !== null}
+                              invalidMessage={error}
+                          >
+                              {/*<label className="edit-section-header" htmlFor={formId}>*/}
+                              {/*  {intl.formatMessage(messages['profile.bio.about.me'])}*/}
+                              {/*</label>*/}
+                              <textarea
+                                  className="form-control"
+                                  id={formId}
+                                  name={formId}
+                                  value={bio}
+                                  onChange={this.handleChange}
+                              />
+                          </ValidationFormGroup>
+                          <FormControls
+                              visibilityId="visibilityBio"
+                              saveState={saveState}
+                              visibility={visibilityBio}
+                              cancelHandler={this.handleClose}
+                              changeHandler={this.handleChange}
+                          />
+                      </form>
+                  </div>
+              </>
+
           ),
           editable: (
             <>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.bio.about.me'])}
-                showEditButton
-                onClickEdit={this.handleOpen}
-                showVisibility={visibilityBio !== null}
-                visibility={visibilityBio}
-              />
-              <p data-hj-suppress className="lead">{bio}</p>
+                <EditableItemHeader
+                    content={headerBody}
+                    showEditButton
+                    onClickEdit={this.handleOpen}
+                    showVisibility={visibilityBio !== null}
+                    visibility={visibilityBio}
+                />
+                <p data-hj-suppress className="lead text-wrap text-break">{bio}</p>
+                <button
+                    className="btn btn-md btn-outline-primary"
+                    style={{ marginTop: '-.35rem' }}
+                    onClick={this.handleOpen}
+                >
+                    <span><i className="fa fa-pencil pe-2"></i></span>
+                    {intl.formatMessage(messages['profile.bio.edit'])}
+                </button>
             </>
           ),
           empty: (

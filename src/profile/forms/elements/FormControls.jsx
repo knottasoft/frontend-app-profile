@@ -14,7 +14,7 @@ function FormControls({
   const buttonState = saveState === 'error' ? null : saveState;
 
   return (
-    <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center">
+    <div className="d-flex flex-row-reverse flex-wrap justify-content-end align-items-center mt-2">
       <div className="form-group d-flex flex-wrap">
         <label className="col-form-label" htmlFor={visibilityId}>
           {intl.formatMessage(messages['profile.formcontrols.who.can.see'])}

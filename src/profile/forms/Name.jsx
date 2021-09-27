@@ -10,6 +10,7 @@ import FormControls from './elements/FormControls';
 import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
+import EditButton from './elements/EditButton';
 
 // Selectors
 import { editableFormSelector } from '../data/selectors';
@@ -47,12 +48,12 @@ class Name extends React.Component {
 
   render() {
     const {
-      formId, name, visibilityName, editMode, saveState, intl,
+      formId, name, visibilityName, editMode, saveState, intl, showEditButton
     } = this.props;
 
     return (
       <SwitchContent
-        className="mb-5"
+        className="mb-3"
         expression={editMode}
         cases={{
           editing: (
@@ -68,7 +69,7 @@ class Name extends React.Component {
                   Once we're super sure we don't want it back, you could delete the name props and
                   such to fully get rid of it.
                   */}
-                  <p data-hj-suppress className="h5">{name}</p>
+                  <p data-hj-suppress className="h6">{name}</p>
                   <small className="form-text text-muted" id={`${formId}-help-text`}>
                     {intl.formatMessage(messages['profile.name.details'])}
                   </small>
@@ -85,17 +86,25 @@ class Name extends React.Component {
           ),
           editable: (
             <>
-              <EditableItemHeader
-                content={intl.formatMessage(messages['profile.name.full.name'])}
-                showEditButton
-                onClickEdit={this.handleOpen}
-                showVisibility={visibilityName !== null}
-                visibility={visibilityName}
-              />
-              <p data-hj-suppress className="h5">{name}</p>
-              <small className="form-text text-muted">
-                {intl.formatMessage(messages['profile.name.details'])}
-              </small>
+                <EditableItemHeader
+                    content={`${intl.formatMessage(messages['profile.name.full.name'])}`}
+                    onClickEdit={this.handleOpen}
+                    showVisibility={visibilityName !== null}
+                    visibility={visibilityName}
+                />
+                <div className="d-flex flex-column justify-content-start">
+                    <EditButton
+                        style={{ marginTop: '-.35rem' }}
+                        onClick={this.handleOpen}
+                        content={name}
+                        className="without-focuse float-left px-0 text-start btn-link"
+                    >
+                    </EditButton>
+                    <small className="text-muted">
+                        {intl.formatMessage(messages['profile.name.details'])}
+                    </small>
+                </div>
+
             </>
           ),
           empty: (
@@ -133,6 +142,7 @@ Name.propTypes = {
   visibilityName: PropTypes.oneOf(['private', 'all_users']),
   editMode: PropTypes.oneOf(['editing', 'editable', 'empty', 'static']),
   saveState: PropTypes.string,
+  showEditButton: PropTypes.bool,
 
   // Actions
   changeHandler: PropTypes.func.isRequired,
@@ -149,6 +159,7 @@ Name.defaultProps = {
   saveState: null,
   name: null,
   visibilityName: 'private',
+  showEditButton: false,
 };
 
 export default connect(

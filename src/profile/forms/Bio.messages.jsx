@@ -6,6 +6,11 @@ const messages = defineMessages({
     defaultMessage: 'About Me',
     description: 'A section of a user profile',
   },
+  'profile.bio.edit': {
+    id: 'profile.bio.edit',
+    defaultMessage: 'Edit your bio',
+    description: 'Edit a user bio button',
+  },
 });
 
 export default messages;

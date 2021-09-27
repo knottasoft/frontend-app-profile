@@ -8,19 +8,21 @@ import { Button } from '@edx/paragon';
 import messages from './EditButton.messages';
 
 function EditButton({
-  onClick, className, style, intl,
+  onClick, className, style, intl, content
 }) {
+
+  const buttonContent = React.createElement("p", {
+    className: "h6",
+  }, content);
+
   return (
-    <Button
-      variant="link"
-      size="sm"
-      className={className}
+    <button
+      className={`btn btn-sm ${className}`}
       onClick={onClick}
       style={style}
     >
-      <FontAwesomeIcon className="mr-1" icon={faPencilAlt} />
-      {intl.formatMessage(messages['profile.editbutton.edit'])}
-    </Button>
+      {buttonContent}
+    </button>
   );
 }
 
@@ -30,7 +32,7 @@ EditButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   style: PropTypes.object, // eslint-disable-line
-
+  content: PropTypes.string,
   // i18n
   intl: intlShape.isRequired,
 };
@@ -38,4 +40,5 @@ EditButton.propTypes = {
 EditButton.defaultProps = {
   className: null,
   style: null,
+  content: null
 };

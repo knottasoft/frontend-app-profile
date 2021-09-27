@@ -16,128 +16,38 @@
   }
 }
 
-.profile-page-bg-banner {
-  height: 12rem;
-  background-image: url('./assets/dot-pattern-light.png');
-  background-repeat: repeat-x;
-  background-size: auto 85%;
+#avatar, #panding {
+  background-color: #DDD8E8;
+  height: 150px;
+  width: 150px;
+  border: 3px solid #F6F7FA;
+  border-radius: 50%;
+  transition: background ease-out 200ms;
 }
 
-.profile-page {
-  .edit-section-header {
-    @extend .h6;
-    display: block;
-    font-weight: normal;
-    letter-spacing: 0;
-    margin: 0;
-  }
-
-  label.edit-section-header {
-    margin-bottom: $spacer * .5;
-  }
-
-  .profile-avatar-wrap {
-    @include media-breakpoint-up(md) {
-      max-width: 12rem;
-      margin-right: 0;
-      margin-top: -8rem;
-      margin-bottom: 2rem;
-    }
-  }
-
-  .profile-avatar-menu-container {
-    background: rgba(0,0,0,.65);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-
-    @include media-breakpoint-up(md) {
-      background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
-      align-items: flex-end;
-    }
-
-    .btn {
-      text-decoration: none;
-      @include media-breakpoint-up(md) {
-        margin-bottom: 1.2rem;
-      }
-    }
-
-    .dropdown {
-      @include media-breakpoint-up(md) {
-        margin-bottom: 1.2rem;
-      }
-
-      .btn {
-        color: $white;
-        background: transparent;
-        border-color: transparent;
-        margin: 0;
-      }
-    }
-  }
-
-  .profile-avatar {
-    width: 5rem;
-    height: 5rem;
-    position: relative;
-
-    @include media-breakpoint-up(md) {
-      width: 12rem;
-      height: 12rem;
-    }
-
-    .profile-avatar-edit-button {
-      border: none;
-      position: absolute;
-      height: 100%;
-      left: 0;
-      width: 100%;
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      padding-top: .1rem;
-      font-weight: 600;
-      background: rgba(0,0,0,.5);
-      border-radius:0;
-      transition: opacity 200ms ease;
-
-      @include media-breakpoint-up(md) {
-        height: 4rem;
-      }
-
-      &:focus, &:hover, &:active, &.active {
-        opacity: 1;
-      }
-    }
-  }
-
-  .certificate {
-    position: relative;
-
-    .certificate-title {
-      font-family: $font-family-serif;
-      font-weight: 400;
-    }
-
-    .certificate-type-illustration {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      bottom: 0;
-      width: 12rem;
-      opacity: .06;
-      background-size: 90%;
-      background-repeat: no-repeat;
-      background-position: right top;
-    }
-
-    .card-body {
-      position: relative;
-    }
-  }
+#preview {
+  position: relative;
 }
+
+#image {
+  display: none;
+}
+
+#upload-button {
+  padding: 18px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: #F6F7FA;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+  0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+  0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  transition: background-color ease-out 120ms;
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+}
+
+//#upload-button:hover {
+//  background-color: #45a;
+//}

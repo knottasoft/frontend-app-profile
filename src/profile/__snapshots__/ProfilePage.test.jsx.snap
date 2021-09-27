@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
+exports[`<DesktopProfilePage /> Renders correctly in various states app loading 1`] = `
 <div
   className="profile-page"
 >
@@ -31,7 +31,7 @@ exports[`<ProfilePage /> Renders correctly in various states app loading 1`] = `
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states viewing other profile 1`] = `
+exports[`<DesktopProfilePage /> Renders correctly in various states viewing other profile 1`] = `
 <div
   className="profile-page"
 >
@@ -98,7 +98,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               className="mb-0"
             >
               <span>
-                Member since 
+                Member since
                 <span>
                   2017
                 </span>
@@ -135,7 +135,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
               className="mb-0"
             >
               <span>
-                Member since 
+                Member since
                 <span>
                   2017
                 </span>
@@ -215,7 +215,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing other profi
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states viewing own profile 1`] = `
+exports[`<DesktopProfilePage /> Renders correctly in various states viewing own profile 1`] = `
 <div
   className="profile-page"
 >
@@ -304,7 +304,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="mb-0"
             >
               <span>
-                Member since 
+                Member since
                 <span>
                   2017
                 </span>
@@ -329,7 +329,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             <span
               className="d-inline-block align-text-top"
             >
-               
+
               <span
                 className="pgn__icon"
                 style={
@@ -382,7 +382,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
               className="mb-0"
             >
               <span>
-                Member since 
+                Member since
                 <span>
                   2017
                 </span>
@@ -407,7 +407,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
             <span
               className="d-inline-block align-text-top"
             >
-               
+
               <span
                 className="pgn__icon"
                 style={
@@ -514,7 +514,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Just me
                 </span>
               </p>
@@ -609,7 +609,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -699,7 +699,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -789,7 +789,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Just me
                 </span>
               </p>
@@ -879,7 +879,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -969,7 +969,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         style={Object {}}
                       />
                     </svg>
-                    Add 
+                    Add
                     LinkedIn
                   </button>
                 </div>
@@ -1058,7 +1058,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -1148,7 +1148,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -1206,7 +1206,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                       className="small mb-2"
                     >
                       <span>
-                        Completed on 
+                        Completed on
                         <span>
                           3/4/2019
                         </span>
@@ -1224,7 +1224,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
                         <span
                           className="d-inline-block align-text-top"
                         >
-                           
+
                           <span
                             className="pgn__icon"
                             style={
@@ -1266,7 +1266,7 @@ exports[`<ProfilePage /> Renders correctly in various states viewing own profile
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states while saving an edited bio 1`] = `
+exports[`<DesktopProfilePage /> Renders correctly in various states while saving an edited bio 1`] = `
 <div
   className="profile-page"
 >
@@ -1355,7 +1355,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               className="mb-0"
             >
               <span>
-                Member since 
+                Member since
                 <span>
                   2017
                 </span>
@@ -1380,7 +1380,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             <span
               className="d-inline-block align-text-top"
             >
-               
+
               <span
                 className="pgn__icon"
                 style={
@@ -1433,7 +1433,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
               className="mb-0"
             >
               <span>
-                Member since 
+                Member since
                 <span>
                   2017
                 </span>
@@ -1458,7 +1458,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
             <span
               className="d-inline-block align-text-top"
             >
-               
+
               <span
                 className="pgn__icon"
                 style={
@@ -1565,7 +1565,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Just me
                 </span>
               </p>
@@ -1660,7 +1660,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -1750,7 +1750,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -1840,7 +1840,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Just me
                 </span>
               </p>
@@ -1930,7 +1930,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -2020,7 +2020,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         style={Object {}}
                       />
                     </svg>
-                    Add 
+                    Add
                     LinkedIn
                   </button>
                 </div>
@@ -2270,7 +2270,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -2328,7 +2328,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                       className="small mb-2"
                     >
                       <span>
-                        Completed on 
+                        Completed on
                         <span>
                           3/4/2019
                         </span>
@@ -2346,7 +2346,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
                         <span
                           className="d-inline-block align-text-top"
                         >
-                           
+
                           <span
                             className="pgn__icon"
                             style={
@@ -2388,7 +2388,7 @@ exports[`<ProfilePage /> Renders correctly in various states while saving an edi
 </div>
 `;
 
-exports[`<ProfilePage /> Renders correctly in various states without credentials service 1`] = `
+exports[`<DesktopProfilePage /> Renders correctly in various states without credentials service 1`] = `
 <div
   className="profile-page"
 >
@@ -2477,7 +2477,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               className="mb-0"
             >
               <span>
-                Member since 
+                Member since
                 <span>
                   2017
                 </span>
@@ -2514,7 +2514,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
               className="mb-0"
             >
               <span>
-                Member since 
+                Member since
                 <span>
                   2017
                 </span>
@@ -2605,7 +2605,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Just me
                 </span>
               </p>
@@ -2700,7 +2700,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -2790,7 +2790,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -2880,7 +2880,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Just me
                 </span>
               </p>
@@ -2970,7 +2970,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -3060,7 +3060,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         style={Object {}}
                       />
                     </svg>
-                    Add 
+                    Add
                     LinkedIn
                   </button>
                 </div>
@@ -3149,7 +3149,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -3239,7 +3239,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       style={Object {}}
                     />
                   </svg>
-                   
+
                   Everyone on edX
                 </span>
               </p>
@@ -3297,7 +3297,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                       className="small mb-2"
                     >
                       <span>
-                        Completed on 
+                        Completed on
                         <span>
                           3/4/2019
                         </span>
@@ -3315,7 +3315,7 @@ exports[`<ProfilePage /> Renders correctly in various states without credentials
                         <span
                           className="d-inline-block align-text-top"
                         >
-                           
+
                           <span
                             className="pgn__icon"
                             style={

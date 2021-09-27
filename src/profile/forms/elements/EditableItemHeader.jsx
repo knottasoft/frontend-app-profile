@@ -14,12 +14,15 @@ function EditableItemHeader({
 }) {
   return (
     <>
-      <div className="editable-item-header mb-2">
-        <h2 className="edit-section-header" id={headingId}>
-          {content}
-          {showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right px-0" onClick={onClickEdit} /> : null}
-        </h2>
-        {showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}
+      <div className="editable-item-header">
+        <h4 className="edit-section-header" id={headingId}>
+          <ul className="list-inline mb-0">
+            <li className="list-inline-item h6">{content}</li>
+            <li className="list-inline-item h6">{showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}</li>
+          </ul>
+          {/*{showEditButton ? <EditButton style={{ marginTop: '-.35rem' }} className="float-right px-0" onClick={onClickEdit} /> : null}*/}
+        </h4>
+        {/*{showVisibility ? <p className="mb-0"><Visibility to={visibility} /></p> : null}*/}
       </div>
     </>
   );

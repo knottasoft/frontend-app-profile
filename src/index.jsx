@@ -12,15 +12,17 @@ import {
   AppProvider,
   ErrorPage,
 } from '@edx/frontend-platform/react';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+import 'bootstrap';
+
+import Header, { messages as headerMessages } from './header';
+import Footer, { messages as footerMessages } from './footer';
 
 import appMessages from './i18n';
+
 import { ProfilePage, NotFoundPage } from './profile';
 import configureStore from './data/configureStore';
 
@@ -30,7 +32,7 @@ subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Header />
-      <main>
+      <main id="app">
         <Switch>
           <Route path="/u/:username" component={ProfilePage} />
           <Route path="/notfound" component={NotFoundPage} />
