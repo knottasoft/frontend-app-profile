@@ -11,6 +11,11 @@ const messages = defineMessages({
     defaultMessage: 'Profile loading...',
     description: 'Message displayed when the profile data is loading.',
   },
+  'profile.sociallinks.social.links': {
+    id: 'profile.sociallinks.social.links',
+    defaultMessage: 'Social Links',
+    description: 'A section of a user profile',
+  },
 });
 
 export default messages;

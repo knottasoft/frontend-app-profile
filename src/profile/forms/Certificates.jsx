@@ -22,6 +22,7 @@ import iconInfo from "../../assets/icon-info.svg"
 // Selectors
 import { certificatesSelector } from '../data/selectors';
 import EditButton from "./elements/EditButton";
+import EditableItemHeaderSingle from "./elements/EditableItemHeaderSingle";
 
 class Certificates extends React.Component {
   constructor(props) {
@@ -144,10 +145,11 @@ class Certificates extends React.Component {
     } = this.props;
 
     const headerBody = React.createElement(
-        'h4',
+        'h5',
         {},
-        `📝 ${intl.formatMessage(messages['profile.certificates.my.certificates'])}`
-    )
+        `${intl.formatMessage(messages['profile.certificates.my.certificates'])}`
+      )
+
 
     return (
       <SwitchContent
@@ -156,11 +158,12 @@ class Certificates extends React.Component {
         cases={{
           editing: (
               <>
-                <EditableItemHeader
+                <EditableItemHeaderSingle
                     content={headerBody}
                     onClickEdit={this.handleOpen}
                     showVisibility={visibilityCourseCertificates !== null}
                     visibility={visibilityCourseCertificates}
+                    headingId="certificates"
                 />
                 <div role="dialog" aria-labelledby="course-certificates-label">
                   <form onSubmit={this.handleSubmit}>
@@ -183,11 +186,12 @@ class Certificates extends React.Component {
           ),
           editable: (
             <>
-                <EditableItemHeader
+                <EditableItemHeaderSingle
                     content={headerBody}
                     onClickEdit={this.handleOpen}
                     showVisibility={visibilityCourseCertificates !== null}
                     visibility={visibilityCourseCertificates}
+                    headingId="certificates"
                 />
                 {this.renderCertificates()}
                 <button
@@ -203,11 +207,12 @@ class Certificates extends React.Component {
           ),
           empty: (
             <>
-                <EditableItemHeader
+                <EditableItemHeaderSingle
                     content={headerBody}
                     onClickEdit={this.handleOpen}
                     showVisibility={visibilityCourseCertificates !== null}
                     visibility={visibilityCourseCertificates}
+                    headingId="certificates"
                 />
                 {this.renderCertificates()}
                 <button
@@ -222,7 +227,7 @@ class Certificates extends React.Component {
           ),
           static: (
             <>
-              <EditableItemHeader content={headerBody} />
+              <EditableItemHeaderSingle content={headerBody} headingId="certificates"/>
               {this.renderCertificates()}
             </>
           ),

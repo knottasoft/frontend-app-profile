@@ -8,7 +8,7 @@ import messages from './Bio.messages';
 
 // Components
 import FormControls from './elements/FormControls';
-import EditableItemHeader from './elements/EditableItemHeader';
+import EditableItemHeaderSingle from './elements/EditableItemHeaderSingle';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
@@ -50,9 +50,9 @@ class Bio extends React.Component {
     } = this.props;
 
     const headerBody = React.createElement(
-        'h4',
+        'h5',
         {},
-        `📝 ${intl.formatMessage(messages['profile.bio.about.me'])}`
+        `${intl.formatMessage(messages['profile.bio.about.me'])}`
     )
 
     return (
@@ -62,7 +62,7 @@ class Bio extends React.Component {
         cases={{
           editing: (
               <>
-                  <EditableItemHeader
+                  <EditableItemHeaderSingle
                       content={headerBody}
                       onClickEdit={this.handleOpen}
                       showVisibility={visibilityBio !== null}
@@ -100,7 +100,7 @@ class Bio extends React.Component {
           ),
           editable: (
             <>
-                <EditableItemHeader
+                <EditableItemHeaderSingle
                     content={headerBody}
                     showEditButton
                     onClickEdit={this.handleOpen}
@@ -120,19 +120,19 @@ class Bio extends React.Component {
           ),
           empty: (
             <>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
-              <EmptyContent onClick={this.handleOpen}>
-                <FormattedMessage
-                  id="profile.bio.empty"
-                  defaultMessage="Add a short bio"
-                  description="instructions when the user hasn't written an About Me"
-                />
-              </EmptyContent>
+                <EditableItemHeaderSingle content={headerBody} />
+                <EmptyContent onClick={this.handleOpen}>
+                    <FormattedMessage
+                      id="profile.bio.empty"
+                      defaultMessage="Add a short bio"
+                      description="instructions when the user hasn't written an About Me"
+                    />
+                </EmptyContent>
             </>
           ),
           static: (
             <>
-              <EditableItemHeader content={intl.formatMessage(messages['profile.bio.about.me'])} />
+              <EditableItemHeaderSingle content={intl.formatMessage(messages['profile.bio.about.me'])} />
               <p data-hj-suppress className="lead">{bio}</p>
             </>
           ),

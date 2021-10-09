@@ -25,12 +25,13 @@ import Name from './forms/Name';
 import Country from './forms/Country';
 import PreferredLanguage from './forms/PreferredLanguage';
 import Education from './forms/Education';
-import SocialLinks from './forms/SocialLinks';
+import SocialLinks from './forms/SocialLinks2';
 import Bio from './forms/Bio';
 import Certificates from './forms/Certificates';
 import AgeMessage from './AgeMessage';
 import DateJoined from './DateJoined';
 import PageLoading from './PageLoading';
+
 import Banner from './Banner';
 
 import profileWhiteIcon from '../assets/icon-user-white.svg'
@@ -157,6 +158,8 @@ class DesktopProfilePage extends React.Component {
 
     if (photoUploadError === null) {
       return null;
+    } else {
+      notify(photoUploadError);
     }
 
     return (
@@ -197,10 +200,11 @@ class DesktopProfilePage extends React.Component {
       visibilityBio,
       requiresParentalConsent,
       isLoadingProfile,
+      intl
     } = this.props;
 
     if (isLoadingProfile) {
-      return <PageLoading srMessage={this.props.intl.formatMessage(messages['profile.loading'])} />;
+      return <PageLoading srMessage={intl.formatMessage(messages['profile.loading'])} />;
     }
 
     const commonFormProps = {
@@ -279,30 +283,44 @@ class DesktopProfilePage extends React.Component {
 
             </div>
             <hr className="mt-2 mb-3"/>
-            <div className="mb-4">
-              <h2 className="section-heading">
-                <span className="pe-1">🤖</span> Social Media Links
-              </h2>
-              {/*TODO: Нужно забирать название организации из конфига*/}
+            <div className="my-4">
+              <h5 className="section-heading">
+                <span className="pe-1">🤖</span> {intl.formatMessage(messages['profile.sociallinks.social.links'])}
+              </h5>
               <p className="text-secondary">Optionally, link your personal accounts to the social media icons on your ЦОПП profile.</p>
             </div>
-            <div className="hstack gap-2 justify-content-between">
-              <SocialLinks
-                  socialLinks={socialLinks}
-                  draftSocialLinksByPlatform={draftSocialLinksByPlatform}
-                  visibilitySocialLinks={visibilitySocialLinks}
-                  formId="socialLinks"
-                  {...commonFormProps}
-              />
+            <div className="row">
+              {socialLinks.map(platform => (
+                  <div className="col-6">
+                    <SocialLinks
+                        socialLinks={platform}
+                        draftSocialLinksByPlatform={draftSocialLinksByPlatform}
+                        visibilitySocialLinks={visibilitySocialLinks}
+                        formId={`socialLink-${platform.platform}`}
+                        {...commonFormProps}
+                    />
+                  </div>
+              ))}
             </div>
+            {/*<div className="hstack gap-2 justify-content-between">*/}
+            {/*  */}
+            {/*  <SocialLinks*/}
+            {/*      socialLinks={socialLinks}*/}
+            {/*      draftSocialLinksByPlatform={draftSocialLinksByPlatform}*/}
+            {/*      visibilitySocialLinks={visibilitySocialLinks}*/}
+            {/*      formId="socialLinks"*/}
+            {/*      {...commonFormProps}*/}
+            {/*  />*/}
+            {/*</div>*/}
             <hr className="mt-2 mb-3"/>
+            <Bio
+                bio={bio}
+                visibilityBio={visibilityBio}
+                formId="bio"
+                {...commonFormProps}
+            />
             <div className="mb-4">
-              <Bio
-                  bio={bio}
-                  visibilityBio={visibilityBio}
-                  formId="bio"
-                  {...commonFormProps}
-              />
+
               {/*TODO: Нужно забирать название организации из конфига*/}
               {/*<p className="text-secondary">Optionally, link your personal accounts to the social media icons on your ЦОПП profile.</p>*/}
             </div>
