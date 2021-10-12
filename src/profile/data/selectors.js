@@ -33,8 +33,12 @@ export const editableFormModeSelector = createSelector(
   (account, isAuthenticatedUserProfile, certificates, formId, currentlyEditingField) => {
     // If the prop doesn't exist, that means it hasn't been set (for the current user's profile)
     // or is being hidden from us (for other users' profiles)
+
     let propExists = account[formId] != null && account[formId].length > 0;
     propExists = formId === 'certificates' ? certificates.length > 0 : propExists; // overwrite for certificates
+    propExists = formId === 'socialLinks-twitter' ? checkSocialLink(account, 'twitter') : propExists;
+    propExists = formId === 'socialLinks-facebook' ? checkSocialLink(account, 'facebook') : propExists;
+    propExists = formId === 'socialLinks-linkedin' ? checkSocialLink(account, 'linkedin') : propExists;
     // If this isn't the current user's profile or if
     // the current user has no age set / under 13 ...
     if (!isAuthenticatedUserProfile || account.requiresParentalConsent) {
@@ -55,6 +59,13 @@ export const editableFormModeSelector = createSelector(
     return 'editable';
   },
 );
+
+function checkSocialLink(account, social) {
+    return account['socialLinks'] != null &&
+        account['socialLinks'].find(el => el.platform === social) != null
+}
+
+
 
 export const accountDraftsFieldSelector = createSelector(
   formIdSelector,

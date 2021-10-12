@@ -8,21 +8,21 @@ import { Button } from '@edx/paragon';
 import messages from './EditButton.messages';
 
 function EditButton({
-  onClick, className, style, intl, content
-}) {
+                      onClick, className, style, intl, content
+                    }) {
 
   const buttonContent = React.createElement("p", {
     className: "h6",
   }, content);
 
   return (
-    <button
-      className={`btn btn-sm ${className}`}
-      onClick={onClick}
-      style={style}
-    >
-      {buttonContent}
-    </button>
+      <button
+          className={`btn btn-sm ${className}`}
+          onClick={onClick}
+          style={style}
+      >
+        {buttonContent}
+      </button>
   );
 }
 

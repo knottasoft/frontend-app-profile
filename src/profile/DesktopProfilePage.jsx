@@ -296,7 +296,7 @@ class DesktopProfilePage extends React.Component {
                         socialLinks={platform}
                         draftSocialLinksByPlatform={draftSocialLinksByPlatform}
                         visibilitySocialLinks={visibilitySocialLinks}
-                        formId={`socialLink-${platform.platform}`}
+                        formId={`socialLinks-${platform.platform}`}
                         {...commonFormProps}
                     />
                   </div>

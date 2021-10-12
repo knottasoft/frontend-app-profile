@@ -15,24 +15,34 @@ import EditableItemHeader from './elements/EditableItemHeader';
 import EmptyContent from './elements/EmptyContent';
 import SwitchContent from './elements/SwitchContent';
 
+import facebook from '../assets/social/facebook.svg'
+import linkedin from '../assets/social/linkedin.svg'
+import twitter from '../assets/social/twitter.svg'
+
 // Selectors
 import { editableFormSelector } from '../data/selectors';
 import EditButton from "./elements/EditButton";
 
 const platformDisplayInfo = {
     facebook: {
-        icon: faFacebook,
+        icon: facebook,
         name: 'Facebook',
     },
     twitter: {
-        icon: faTwitter,
+        icon: twitter,
         name: 'Twitter',
     },
     linkedin: {
-        icon: faLinkedin,
+        icon: linkedin,
         name: 'LinkedIn',
     },
 };
+
+let icons = {
+    'Facebook': facebook,
+    'Twitter': twitter,
+    'LinkedIn': linkedin,
+}
 
 class SocialLinks extends React.Component {
     constructor(props) {
@@ -122,11 +132,18 @@ class SocialLinks extends React.Component {
                     ),
                     editable: (
                         <div>
+                            <EditableItemHeader
+                                content={platformDisplayInfo[socialLinks.platform].name}
+                                showEditButton
+                                onClickEdit={this.handleOpen}
+                                showVisibility={visibilitySocialLinks !== null}
+                                visibility={visibilitySocialLinks}
+                            />
                             <div className="d-flex flex-column justify-content-start">
                                 <EditButton
                                     style={{ marginTop: '-.35rem' }}
-                                    onClick={this.handleOpen}
                                     content={socialLinks.socialLink}
+                                    onClick={this.handleOpen}
                                     className="float-left px-0 text-start btn-link"
                                 >
                                 </EditButton>
@@ -142,29 +159,32 @@ class SocialLinks extends React.Component {
                         // />
                     ),
                     editing: (
-                        <div role="dialog" aria-labelledby="social-links-label">
-                            <form onSubmit={this.handleSubmit}>
-                                {/* TODO: Replace this alert with per-field errors. Needs API update. */}
-                                <div id="social-error-feedback">
-                                    {error !== null ? <StatusAlert alertType="danger" dialog={error} dismissible={false} open /> : null}
-                                </div>
-                                <EditingListItem
-                                    key={socialLinks.platform}
-                                    name={platformDisplayInfo[socialLinks.platform].name}
-                                    platform={socialLinks.platform}
-                                    value={socialLinks.socialLink}
-                                    /* TODO: Per-field errors: error={error !== null ? error[platform] : null} */
-                                    onChange={this.handleChange}
-                                />
-                                <FormControls
-                                    visibilityId={`visibilitySocialLinks-${socialLinks.platform}`}
-                                    saveState={saveState}
-                                    visibility={visibilitySocialLinks}
-                                    cancelHandler={this.handleClose}
-                                    changeHandler={this.handleChange}
-                                />
-                            </form>
-                        </div>
+                        <>
+                            <div role="dialog" aria-labelledby="social-links-label">
+                                <form onSubmit={this.handleSubmit}>
+                                    {/* TODO: Replace this alert with per-field errors. Needs API update. */}
+                                    <div id="social-error-feedback">
+                                        {error !== null ? <StatusAlert alertType="danger" dialog={error} dismissible={false} open /> : null}
+                                    </div>
+                                    <EditingListItem
+                                        key={socialLinks.platform}
+                                        name={platformDisplayInfo[socialLinks.platform].name}
+                                        platform={socialLinks.platform}
+                                        value={socialLinks.socialLink}
+                                        /* TODO: Per-field errors: error={error !== null ? error[platform] : null} */
+                                        onChange={this.handleChange}
+                                    />
+                                    <FormControls
+                                        visibilityId={`visibilitySocialLinks-${socialLinks.platform}`}
+                                        saveState={saveState}
+                                        visibility={visibilitySocialLinks}
+                                        cancelHandler={this.handleClose}
+                                        changeHandler={this.handleChange}
+                                    />
+                                </form>
+                            </div>
+                        </>
+
                     ),
                 }}
             />
@@ -287,18 +307,25 @@ EditingListItem.defaultProps = {
 };
 
 function EmptyListItem({ onClick, name }) {
+
     return (
         <div className="mb-4">
-            <EmptyContent onClick={onClick}>
-                <FormattedMessage
-                    id="profile.sociallinks.add"
-                    defaultMessage="Add {network}"
-                    values={{
-                        network: name,
-                    }}
-                    description="{network} is the name of a social network such as Facebook or Twitter"
-                />
-            </EmptyContent>
+            <ul className="list-inline">
+                <li className="list-inline-item"><img src={icons[name]} alt={null}/> </li>
+                <li className="list-inline-item">
+                    <EmptyContent onClick={onClick}>
+                        <FormattedMessage
+                            id="profile.sociallinks.add"
+                            defaultMessage="Add {network}"
+                            values={{
+                                network: name,
+                            }}
+                            description="{network} is the name of a social network such as Facebook or Twitter"
+                        />
+                    </EmptyContent>
+                </li>
+            </ul>
+
         </div>
     );
 }

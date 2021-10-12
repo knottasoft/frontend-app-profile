@@ -14,7 +14,6 @@ function EmptyContent({ children, onClick, showPlusIcon }) {
           onKeyDown={(e) => { if (e.key === 'Enter') { onClick(); } }}
           tabIndex={0}
         >
-          {showPlusIcon ? <FontAwesomeIcon size="xs" className="mr-2" icon={faPlus} /> : null}
           {children}
         </button>
       ) : children}
