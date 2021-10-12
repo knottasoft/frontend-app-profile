@@ -62,7 +62,7 @@ class SocialLinks extends React.Component {
         // with any existing social link drafts, essentially sending a fresh copy of the whole
         // data structure back to the reducer. This helps the reducer stay simple and keeps
         // special cases out of it, concentrating them here, where they began.
-        if (name !== 'visibilitySocialLinks') {
+        if (!name.includes('visibilitySocialLinks')) {
             this.props.changeHandler(
                 'socialLinks',
                 this.mergeWithDrafts({
@@ -73,6 +73,8 @@ class SocialLinks extends React.Component {
                 }),
             );
         } else {
+            console.log(name)
+            console.log(value)
             this.props.changeHandler(name, value);
         }
     }
@@ -107,7 +109,7 @@ class SocialLinks extends React.Component {
         const {
             socialLinks, visibilitySocialLinks, editMode, saveState, error, intl,
         } = this.props;
-
+        console.log(visibilitySocialLinks)
         return (
             <SwitchContent
                 className="mb-3"
@@ -176,7 +178,7 @@ class SocialLinks extends React.Component {
                                         onChange={this.handleChange}
                                     />
                                     <FormControls
-                                        visibilityId={`visibilitySocialLinks-${socialLinks.platform}`}
+                                        visibilityId={`visibilitySocialLinks`}
                                         saveState={saveState}
                                         visibility={visibilitySocialLinks}
                                         cancelHandler={this.handleClose}

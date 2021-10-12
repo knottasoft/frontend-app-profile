@@ -16,6 +16,11 @@ const messages = defineMessages({
     defaultMessage: 'Social Links',
     description: 'A section of a user profile',
   },
+  'profile.main.info': {
+    id: 'profile.main.info',
+    defaultMessage: 'Main Information',
+    description: 'A section of a user profile',
+  }
 });
 
 export default messages;

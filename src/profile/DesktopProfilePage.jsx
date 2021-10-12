@@ -238,7 +238,7 @@ class DesktopProfilePage extends React.Component {
           <div className="col-7">
             <div className="my-4">
               <h5 className="section-heading">
-                <span className="pe-1">🤖</span> Main Information
+                <span className="pe-1">🤖</span> { intl.formatMessage(messages['profile.main.info']) }
               </h5>
             </div>
             <div className="row">
@@ -287,7 +287,6 @@ class DesktopProfilePage extends React.Component {
               <h5 className="section-heading">
                 <span className="pe-1">🤖</span> {intl.formatMessage(messages['profile.sociallinks.social.links'])}
               </h5>
-              <p className="text-secondary">Optionally, link your personal accounts to the social media icons on your ЦОПП profile.</p>
             </div>
             <div className="row">
               {socialLinks.map(platform => (
@@ -302,16 +301,6 @@ class DesktopProfilePage extends React.Component {
                   </div>
               ))}
             </div>
-            {/*<div className="hstack gap-2 justify-content-between">*/}
-            {/*  */}
-            {/*  <SocialLinks*/}
-            {/*      socialLinks={socialLinks}*/}
-            {/*      draftSocialLinksByPlatform={draftSocialLinksByPlatform}*/}
-            {/*      visibilitySocialLinks={visibilitySocialLinks}*/}
-            {/*      formId="socialLinks"*/}
-            {/*      {...commonFormProps}*/}
-            {/*  />*/}
-            {/*</div>*/}
             <hr className="mt-2 mb-3"/>
             <Bio
                 bio={bio}
@@ -320,9 +309,6 @@ class DesktopProfilePage extends React.Component {
                 {...commonFormProps}
             />
             <div className="mb-4">
-
-              {/*TODO: Нужно забирать название организации из конфига*/}
-              {/*<p className="text-secondary">Optionally, link your personal accounts to the social media icons on your ЦОПП profile.</p>*/}
             </div>
             <hr className="mt-2 mb-3"/>
             <div className="mb-4 pb-4">
@@ -331,8 +317,6 @@ class DesktopProfilePage extends React.Component {
                   formId="certificates"
                   {...commonFormProps}
               />
-              {/*TODO: Нужно забирать название организации из конфига*/}
-              {/*<p className="text-secondary">Optionally, link your personal accounts to the social media icons on your ЦОПП profile.</p>*/}
             </div>
             {this.renderAgeMessage()}
           </div>

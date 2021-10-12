@@ -28,7 +28,7 @@ const messages = defineMessages({
   },
   'profile.certificates.edit': {
     id: 'profile.certificates.edit',
-    defaultMessage: 'Edit Visibility',
+    defaultMessage: 'Edit Visability',
     description: 'The string to display when a certificate is of an unknown type',
   },
 
