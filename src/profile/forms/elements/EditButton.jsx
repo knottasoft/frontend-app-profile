@@ -17,7 +17,7 @@ function EditButton({
 
   return (
       <button
-          className={`btn btn-sm ${className}`}
+          className={`d-flex align-items-center btn btn-sm ${className}`}
           onClick={onClick}
           style={style}
       >

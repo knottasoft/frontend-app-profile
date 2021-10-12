@@ -44,6 +44,7 @@ let icons = {
     'LinkedIn': linkedin,
 }
 
+
 class SocialLinks extends React.Component {
     constructor(props) {
         super(props);
@@ -142,7 +143,7 @@ class SocialLinks extends React.Component {
                             <div className="d-flex flex-column justify-content-start">
                                 <EditButton
                                     style={{ marginTop: '-.35rem' }}
-                                    content={socialLinks.socialLink}
+                                    content={<EditButtonContent socialLink={socialLinks.socialLink} icon={icons[platformDisplayInfo[socialLinks.platform].name]}/>}
                                     onClick={this.handleOpen}
                                     className="float-left px-0 text-start btn-link"
                                 >
@@ -235,6 +236,20 @@ export default connect(
     editableFormSelector,
     {},
 )(injectIntl(SocialLinks));
+
+function EditButtonContent({ socialLink, icon }) {
+    return (
+        <ul className="d-flex align-items-center list-inline">
+            <li className="list-inline-item"><img src={icon} alt={null} /></li>
+            <li className="list-inline-item">{ socialLink.split("/").pop() }</li>
+        </ul>
+    );
+}
+
+EditButtonContent.propTypes = {
+    socialLink: PropTypes.string.isRequired,
+    icon: PropTypes.any
+};
 
 function SocialLink({ url, name, platform }) {
     return (
